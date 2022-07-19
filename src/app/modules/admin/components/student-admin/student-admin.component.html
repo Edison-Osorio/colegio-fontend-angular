@@ -1,0 +1,101 @@
+
+<div class="row my-5">
+      <!-- Navegacion de busqueda -->
+      <nav class="navbar navbar-light bg-light mb-3">
+        <div class="container-fluid">
+            <h3 class="fs-3">Listado Alumnos</h3>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+    <div class="col">
+        <table class="table bg-light rounded shadow-sm table-bordered table-hover text-center">
+            <thead>
+                <tr>
+                    <th scope="col" width="50">#</th>
+                    <th scope="col">Nombres</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Grado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let alumno of alumnos">
+                    <th >{{alumno.idAlumno}}</th>
+                    <td>{{alumno.nombre}}</td>
+                    <td>{{alumno.apellido}}</td>
+                    <td>{{alumno.email}}</td>
+                    <td>{{alumno.telefono}}</td>
+                    <td>{{alumno.idGradoA.nombre}}</td>
+                    <td class=" d-flex justify-content-center" ><button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#modificarAlumno" (click)="cargarAlumno(alumno)"> <i class="fa-solid fa-pen-to-square"></i> </button> <button class="btn btn-danger" (click)="eliminarAlumno(alumno.idAlumno)" > <i class="fa-solid fa-trash-can"></i></button></td>
+                </tr>
+               
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!-- Modal para modificar alumnos -->
+
+<div
+  class="modal fade"
+  id="modificarAlumno"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fs-4" id="staticBackdropLabel">{{titleModal}} Alumno</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for="idAlumno">Identificacion</label>
+                    <input type="text" name="idAlumno" id="" [(ngModel)]="alumno.idAlumno" class="form-control" readonly >
+                </div>
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" name="nombre" id="" [(ngModel)]="alumno.nombre" class="form-control" required="true">
+                </div>
+                <div class="form-group">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" name="apellido" id="" [(ngModel)]="alumno.apellido" class="form-control" required="true">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="" [(ngModel)]="alumno.email" class="form-control" required="true">
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Telefono</label>
+                    <input type="tel" name="telefono" id="" [(ngModel)]="alumno.telefono" class="form-control" required="true">
+                </div>
+            </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancel">
+          Close
+        </button>
+        <div *ngIf="showUpdate" >
+          <button type="submit" class="btn btn-primary" (click)=" actualizarAlumno()">{{titleModal}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="container mt-5 ">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-8">
+                <form class="row g-3 ">
+                    <div class="col-md-6 form-floating">
+                        <select class="form-select" name="tipoDocumento" [(ngModel)]="usuario.tipoDocumento" id="tipoDocumento" aria-label="Floating label select example">
+                            <option value="1">Cédula de Ciudadania</option>
+                            <option value="2">Cédula de Extrageria</option>
+                            <option value="3">Tarjeta de Identidad</option>
+                          </select>
+                          <label for="tipoDocumento">Tipo Documento</label>
+                    </div>
+                    <div class="col-md-6 form-floating">
+                        <input type="text" name="idAlumno" [(ngModel)]="alumno.idAlumno"  class="form-control" id="documento" placeholder=" ">
+                        <label for="documento" class="form-label">Documento</label>
+                    </div>
+                   
+                    <div class="col-md-6 form-floating">
+                        <input type="text" class="form-control" name="nombre" [(ngModel)]="alumno.nombre" id="nombre" placeholder=" ">
+                        <label for="nombre" class="form-label">Nombre</label>
+                    </div>
+                    <div class="col-md-6 form-floating">
+                        <input type="text" class="form-control" name="apellido" [(ngModel)]="alumno.apellido" id="apellido" placeholder=" ">
+                        <label for="apellido" class="form-label">Apellido</label>
+                    </div>
+                   
+                    <div class="col-md-6 form-floating">
+                        <input type="email" class="form-control" name="email" [(ngModel)]="alumno.email" id="Email" placeholder=" ">
+                        <label for="Email" class="form-label">Email</label>
+                    </div>
+                    <div class="col-md-6 form-floating">
+                        <input type="tel" class="form-control" name="telefono" [(ngModel)]="alumno.telefono" id="telefono" placeholder=" ">
+                        <label for="telefono" class="form-label">Telefono</label>
+                    </div>
+                   
+                    <div class="col-md-6 form-floating">
+                        <select class="form-select" name="idGradoA" [(ngModel)]="grado" id="floatingSelect" aria-label="Floating label select example">
+                            <option selected>Seleccione un grado</option>
+                            <option *ngFor="let grado of listGrados" value="{{grado.idGrado}}">{{grado.nombre}}</option>
+                          </select>
+                          <label for="floatingSelect">Grado</label>
+                    </div>
+                    <div class="col-md-6 form-floating">
+                        <input type="text" class="form-control" name="password" [(ngModel)]="usuario.password" id="password" placeholder=" ">
+                        <label for="password" class="form-label">Password</label>
+                    </div>
+                   
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-primary" (click)="agregarAlumno()" >Matricular</button>
+                    </div>
+                  </form>
+            </div>
+        </div>
+</div>

@@ -1,0 +1,83 @@
+<div class="d-flex" id="wrapper">
+    <!-- Sidebar -->
+    <div class="bg-white" id="sidebar-wrapper">
+      <div
+        class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"
+      >
+        <i class="fas fa-user-secret me-2"></i><span > Alumno </span>
+      </div>
+      <div class="list-group list-group-flush my-3">
+        <a class="list-group-item list-group-item-action fw-bold fs-5"
+          > Grado: {{grado.nombre}}</a>
+        <a routerLink=" " class="list-group-item list-group-item-action bg-transparent second-text active"
+          ><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+        <a
+          routerLink="materia"
+          class="list-group-item list-group-item-action fw-bold"
+          ><i class="fa-solid fa-users-rectangle"></i> Mis Materias</a>
+        <a
+          routerLink="materias-semestre"
+          class="list-group-item list-group-item-action fw-bold"
+          ><i class="fa-solid fa-users-rectangle"></i> Materias por Semestre</a>
+        <a
+          routerLink="grado"
+          class="list-group-item list-group-item-action fw-bold"
+          ><i class="fa-solid fa-users-rectangle"></i> Mi grado</a>
+        
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+  
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+        <div class="d-flex align-items-center">
+          <i
+            class="fas fa-align-left primary-text fs-4 me-3"
+            id="menu-toggle"
+          ></i>
+          <h2 class="fs-2 m-0">I.E Los Mira Flores </h2>
+        </div>
+  <!-- Navegación -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle second-text fw-bold"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="fas fa-user me-2"></i><span *ngIf="user != null; else usuario">{{user.nombre}} {{user.apellido}}</span>
+                <ng-template #usuario >Usuario</ng-template>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li style="cursor: pointer;"><a class="dropdown-item" (click)="logout()"> <i class="fas fa-power-off text-danger "  ></i> Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+  
+      <div class="container-fluid px-4">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+  

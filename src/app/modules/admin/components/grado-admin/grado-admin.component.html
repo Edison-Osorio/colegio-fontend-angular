@@ -1,0 +1,71 @@
+<div class="container">
+    <h1 class="text-center mt-3">Grados</h1>
+
+    <!-- Navegacion de busqueda -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#nuevoGrado">Nuevo Grado</button>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+    <div class="row g-3 my-2 d-flex justify-content-center  ">
+        <div class="col-md-3" *ngFor="let grado of grados">
+            <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                <div>
+                    <h6 class="fs-5">Código: {{grado.idGrado}}</h6>
+                    <h3 class="fs-5">{{grado.nombre}}</h3>
+                    
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#materias" (click)="codigoTransmitido(grado)">Materias</button>
+                </div>
+                <i class="fas fa-gift fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+            </div>
+        </div>
+    </div>
+</div>
+  
+<app-grado-materia></app-grado-materia>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="nuevoGrado"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fs-4" id="staticBackdropLabel">Nuevo Grado</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          id="cancel"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for="">Nombre</label>
+                    <input type="text" name="nombre" id="" [(ngModel)]="grado.nombre" class="form-control" required="true">
+                </div>
+            </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancel">
+          Close
+        </button>
+        <button type="submit" class="btn btn-primary" (click)="agregarGrado()">Crear</button>
+      </div>
+    </div>
+  </div>
+</div>
